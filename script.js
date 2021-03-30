@@ -98,7 +98,7 @@ function uniqueValues(arr) {
     return i + 1;
 };
 
-console.log(uniqueValues([1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]));
+// console.log(uniqueValues([1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]));
 
 
 // checking single occurring element
@@ -115,4 +115,75 @@ function singleEl(arr) {
     };
 };
 
-singleEl([1, 1, 1, 2, 2, 3]);
+// singleEl([1, 1, 1, 2, 2, 3]);
+
+// Binary Search
+const binarySearch = (arr, elem) => {
+        let start = 0;
+        let end = arr.length - 1;
+        let middle = Math.floor((start + end) / 2);
+        // console.log(start, middle, end);
+        while (arr[middle] !== elem && start <= end) {
+            if (elem < arr[middle]) end = middle - 1;
+            else start = middle + 1;
+            middle = Math.floor((start + end) / 2);
+        };
+        //  console.log(start, middle, end);
+        return arr[middle] === elem ? middle : -1;
+    }
+    // console.log(binarySearch([2, 3, 5, 8, 11, 13, 15, 21, 23, 27, 31, 42, 49, 52], 42));
+
+const naiveSearch = (long, short) => {
+        let count = 0;
+        for (let i = 0; i < long.length; i++) {
+            for (let j = 0; j < short.length; j++) {
+                console.log(short[j], long[i + j])
+                if (short[j] !== long[i + j]) {
+                    console.log('BREAK!');
+                    break;
+                }
+                if (j === short.length - 1) {
+                    console.log('FOUND ONE!');
+                    count++;
+                }
+            }
+        }
+        console.log(count);
+    }
+    // naiveSearch('lorrie lolled', 'lol');
+
+// Recursion
+const countNum = (num) => {
+        if (num <= 0) {
+            console.log('All done!');
+            return;
+        }
+        console.log(num);
+        num--;
+        countNum(num);
+    }
+    // countNum(4);
+
+
+const sumRange = (num) => {
+    if (num === 1) return 1;
+    return num + sumRange(num - 1);
+};
+console.log(sumRange(5));
+
+// Factorial iteratively
+// const factorial = (num) => {
+//     let total = 1;
+//     for (let i = num; i > 0; i--) {
+//         total *= i;
+//     }
+//     return total;
+// };
+// console.log(factorial(5));
+
+// Factorial recursively
+const fact = (num) => {
+    if (num === 1) return 1;
+    return num * fact(num - 1);
+};
+console.log(fact(4));
