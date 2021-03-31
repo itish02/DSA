@@ -169,7 +169,7 @@ const sumRange = (num) => {
     if (num === 1) return 1;
     return num + sumRange(num - 1);
 };
-console.log(sumRange(5));
+// console.log(sumRange(5));
 
 // Factorial iteratively
 // const factorial = (num) => {
@@ -186,4 +186,78 @@ const fact = (num) => {
     if (num === 1) return 1;
     return num * fact(num - 1);
 };
-console.log(fact(4));
+//console.log(fact(4));
+
+// recursion with a helper function
+const returnOdd = (arr) => {
+    let result = [];
+    const helper = (helperInput) => {
+        if (helperInput.length === 0) return;
+        if (helperInput[0] % 2 !== 0) {
+            result.push(helperInput[0]);
+        }
+        helper(helperInput.slice(1));
+    }
+    helper(arr);
+    return result;
+}
+console.log(returnOdd([1, 2, 3, 4, 5, 6, 7, 8, 9]));
+
+// pure recursion
+const collectOdds = (arr) => {
+    let newArr = [];
+    if (arr.length === 0) {
+        return newArr;
+    }
+    if (arr[0] % 2 !== 0) {
+        newArr.push(arr[0]);
+    }
+    newArr = newArr.concat(collectOdds(arr.slice(1)));
+    return newArr;
+}
+console.log(collectOdds([1, 2, 3, 4, 45, 6, 7]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const grandpa = document.querySelector('#grandparent');
+// const parent = document.querySelector('#parent');
+// const child = document.querySelector('#children');
+
+// grandpa.addEventListener('click', (e) => {
+//     // e.stopPropagation();
+//     console.log('Grandpa clicked')
+// }, true);
+
+// parent.addEventListener('click', (e) => {
+//     e.stopPropagation();
+//     console.log('Parent clicked');
+// }, true);
+
+// child.addEventListener('click', (e) => {
+//     // e.stopPropagation();
+//     console.log('Child clicked');
+// }, true);
