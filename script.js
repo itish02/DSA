@@ -217,6 +217,27 @@ const collectOdds = (arr) => {
 }
 console.log(collectOdds([1, 2, 3, 4, 45, 6, 7]));
 
+// POWER FUNCTION
+const pwrFunc = (base, exp) => {
+        if (exp === 0) {
+            return 1;
+        }
+        return base * pwrFunc(base, exp - 1);
+    }
+    // console.log(pwrFunc(4, 3));
+
+// PRODUCT OF ARRAY
+const arrayProduct = (arr) => {
+    if (arr.length === 0) return 1;
+    return arr[0] * arrayProduct(arr.slice(1));
+};
+
+// FIBONACCI
+const fib = (n) => {
+    if (n <= 2) return 1;
+    return fib(n - 1) + fib(n - 2);
+}
+console.log(fib(7));
 
 
 
@@ -261,3 +282,20 @@ console.log(collectOdds([1, 2, 3, 4, 45, 6, 7]));
 //     // e.stopPropagation();
 //     console.log('Child clicked');
 // }, true);
+
+// document.querySelector('#categories').addEventListener('click', (e) => {
+//     console.log(e.target.tagName);
+// window.location.href = `/ ${e.target.id}`;
+// console.log('categories clicked.');
+// })
+
+// EVENT DELEGATION
+// document.querySelector('#form').addEventListener('click', (e) => {
+//     // console.log(e);
+//     if (e.target.dataset.uppercase !== undefined) {
+//         e.target.value = e.target.value.toUpperCase();
+//     }
+//     if (e.target.dataset.lowercase !== undefined) {
+//         e.target.value = e.target.value.toLowerCase();
+//     }
+// })
