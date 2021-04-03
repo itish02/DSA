@@ -190,32 +190,32 @@ const fact = (num) => {
 
 // recursion with a helper function
 const returnOdd = (arr) => {
-    let result = [];
-    const helper = (helperInput) => {
-        if (helperInput.length === 0) return;
-        if (helperInput[0] % 2 !== 0) {
-            result.push(helperInput[0]);
+        let result = [];
+        const helper = (helperInput) => {
+            if (helperInput.length === 0) return;
+            if (helperInput[0] % 2 !== 0) {
+                result.push(helperInput[0]);
+            }
+            helper(helperInput.slice(1));
         }
-        helper(helperInput.slice(1));
+        helper(arr);
+        return result;
     }
-    helper(arr);
-    return result;
-}
-console.log(returnOdd([1, 2, 3, 4, 5, 6, 7, 8, 9]));
+    // console.log(returnOdd([1, 2, 3, 4, 5, 6, 7, 8, 9]));
 
 // pure recursion
 const collectOdds = (arr) => {
-    let newArr = [];
-    if (arr.length === 0) {
+        let newArr = [];
+        if (arr.length === 0) {
+            return newArr;
+        }
+        if (arr[0] % 2 !== 0) {
+            newArr.push(arr[0]);
+        }
+        newArr = newArr.concat(collectOdds(arr.slice(1)));
         return newArr;
     }
-    if (arr[0] % 2 !== 0) {
-        newArr.push(arr[0]);
-    }
-    newArr = newArr.concat(collectOdds(arr.slice(1)));
-    return newArr;
-}
-console.log(collectOdds([1, 2, 3, 4, 45, 6, 7]));
+    // console.log(collectOdds([1, 2, 3, 4, 45, 6, 7]));
 
 // POWER FUNCTION
 const pwrFunc = (base, exp) => {
@@ -234,75 +234,65 @@ const arrayProduct = (arr) => {
 
 // FIBONACCI
 const fib = (n) => {
-    if (n <= 2) return 1;
-    return fib(n - 1) + fib(n - 2);
-}
-console.log(fib(7));
+        if (n <= 2) return 1;
+        return fib(n - 1) + fib(n - 2);
+    }
+    // console.log(fib(7));
 
 // STRING REVERSE
 const reverse = (str) => {
-    if (str.length <= 1) return str;
-    return reverse(str.slice(1)) + str[0];
-}
-console.log(reverse('itish'));
-
-function partition(arr, start, end) {
-    // Taking the last element as the pivot
-    const pivotValue = arr[end];
-    let pivotIndex = start;
-    console.log(pivotValue, pivotIndex);
-    for (let i = start; i < end; i++) {
-        if (arr[i] < pivotValue) {
-            // Swapping elements
-            [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
-            // Moving to next element
-            pivotIndex++;
-        }
+        if (str.length <= 1) return str;
+        return reverse(str.slice(1)) + str[0];
     }
+    // console.log(reverse('itish'));
 
-    // Putting the pivot value in the middle
-    [arr[pivotIndex], arr[end]] = [arr[end], arr[pivotIndex]]
-    return pivotIndex;
-};
 
-function quickSortIterative(arr) {
-    // Creating an array that we'll use as a stack, using the push() and pop() functions
-    stack = [];
 
-    // Adding the entire initial array as an "unsorted subarray"
-    stack.push(0);
-    stack.push(arr.length - 1);
+// console.log(ourArr);
 
-    // There isn't an explicit peek() function
-    // The loop repeats as long as we have unsorted subarrays
-    while (stack[stack.length - 1] >= 0) {
-
-        // Extracting the top unsorted subarray
-        end = stack.pop();
-        start = stack.pop();
-
-        pivotIndex = partition(arr, start, end);
-
-        // If there are unsorted elements to the "left" of the pivot,
-        // we add that subarray to the stack so we can sort it later
-        if (pivotIndex - 1 > start) {
-            stack.push(start);
-            stack.push(pivotIndex - 1);
+// BUBBLE SORT
+const bubbleSort = (arr) => {
+        let noSwaps;
+        const swap = (arr, idx1, idx2) => {
+            [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
         }
-
-        // If there are unsorted elements to the "right" of the pivot,
-        // we add that subarray to the stack so we can sort it later
-        if (pivotIndex + 1 < end) {
-            stack.push(pivotIndex + 1);
-            stack.push(end);
+        for (let i = arr.length; i > 0; i--) {
+            noSwaps = true;
+            for (let j = 0; j < i - 1; j++) {
+                console.log(arr, arr[j], arr[j + 1]);
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                    noSwaps = false;
+                }
+            }
+            if (noSwaps) {
+                console.log('No swaps this time. Breaking')
+                break;
+            }
         }
+        return arr;
     }
+    // bubbleSort([3, 1, 8, 5, 4, -1, 10]);
+
+// INSERTION SORT
+const insertionSort = (arr) => {
+    const swap = (arr, idx1, idx2) => {
+        [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+    }
+    for (let i = 0; i < arr.length; i++) {
+        let lowest = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[lowest]) {
+                lowest = j;
+                // console.log(lowest);
+            }
+        }
+        if (i !== lowest) swap(arr, i, lowest);
+    }
+    return arr
 }
-ourArr = [4, 3, 1, 8, 7, 10];
-quickSortIterative(ourArr);
-console.log(ourArr);
 
-
+console.log(insertionSort([3, 1, 8, 5, 4, -1, 10]));
 
 
 
