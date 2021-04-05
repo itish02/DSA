@@ -295,18 +295,18 @@ const selectionSort = (arr) => {
 
 // INSERTION SORT
 const insertionSort = (arr) => {
-    for (let i = 0; i < arr.length; i++) {
-        let currentVal = arr[i];
-        for (let j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
-            // console.log(arr, arr[j], arr[i]);
-            arr[j + 1] = arr[j];
-            arr[j] = currentVal;
+        for (let i = 0; i < arr.length; i++) {
+            let currentVal = arr[i];
+            for (let j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+                // console.log(arr, arr[j], arr[i]);
+                arr[j + 1] = arr[j];
+                arr[j] = currentVal;
+            }
         }
+        return arr
     }
-    return arr
-}
-console.log([2, 1, 4, 19, 9])
-console.log(insertionSort([2, 1, 4, 19, 9]));
+    // console.log([2, 1, 4, 19, 9])
+    // console.log(insertionSort([2, 1, 4, 19, 9]));
 
 // MERGING SORTED ARRAYS
 const merge = (arr1, arr2) => {
@@ -336,15 +336,50 @@ const merge = (arr1, arr2) => {
 
 // MERGE SORT
 const mergeSort = (arr) => {
-    if (arr.length <= 1) return arr;
-    let mid = Math.floor(arr.length / 2);
-    let left = mergeSort(arr.slice(0, mid));
-    let right = mergeSort(arr.slice(mid));
-    return merge(left, right);
+        if (arr.length <= 1) return arr;
+        let mid = Math.floor(arr.length / 2);
+        let left = mergeSort(arr.slice(0, mid));
+        let right = mergeSort(arr.slice(mid));
+        return merge(left, right);
+    }
+    // console.log(mergeSort([1, 10, 50, 2, 14, 88, 100]));
+
+
+// const obj = {
+//     name: 'Itish',
+//     age: '23',
+//     greet() {
+//         console.log(`Hi, my name is ${this.name} and I am ${this.age} years old`)
+//         console.log(this);
+//     }
+// }
+
+class Cars {
+    constructor(name, model, make) {
+        this.name = name;
+        this.model = model;
+        this.make = make;
+    }
+    carDescription() {
+        console.log(`This is a ${this.name}, ${this.model} (${this.make})`);
+    }
 }
-console.log(mergeSort([1, 10, 50, 2, 14, 88, 100]));
+const merc = new Cars('Mercedes', 'G-63', 2020);
+merc.carDescription();
 
-
+const obj = {
+    name: 'checking',
+    x() {
+        let a = 10;
+        let y = () => {
+            console.log(a);
+            console.log(this)
+        }
+        a = 200;
+        return y;
+    }
+}
+obj.x()();
 
 
 
