@@ -345,99 +345,35 @@ const mergeSort = (arr) => {
     // console.log(mergeSort([1, 10, 50, 2, 14, 88, 100]));
 
 
-// const obj = {
-//     name: 'Itish',
-//     age: '23',
-//     greet() {
-//         console.log(`Hi, my name is ${this.name} and I am ${this.age} years old`)
-//         console.log(this);
-//     }
-// }
-
-class Cars {
-    constructor(name, model, make) {
-        this.name = name;
-        this.model = model;
-        this.make = make;
-    }
-    carDescription() {
-        console.log(`This is a ${this.name}, ${this.model} (${this.make})`);
-    }
+// PIVOT FUNCTION FOR QUICKSORT
+const swap = (arr, indx1, indx2) => {
+    [arr[indx1], arr[indx2]] = [arr[indx2], arr[indx1]];
 }
-const merc = new Cars('Mercedes', 'G-63', 2020);
-merc.carDescription();
 
-const obj = {
-    name: 'checking',
-    x() {
-        let a = 10;
-        let y = () => {
-            console.log(a);
-            console.log(this)
+const pivot = (arr, start = 0, end = arr.length - 1) => {
+    let pivot = arr[start];
+    let swapIndex = start;
+    for (let i = start + 1; i < arr.length; i++) {
+        if (pivot > arr[i]) {
+            swapIndex++;
+            swap(arr, swapIndex, i);
+            // console.log(arr, swapIndex);
         }
-        a = 200;
-        return y;
     }
+    swap(arr, start, swapIndex);
+    return swapIndex;
+    // console.log(arr, swapIndex);
+};
+
+const quickSort = (arr, left = 0, right = arr.length - 1) => {
+    if (left < right) {
+        let pivotIndex = pivot(arr, left, right);
+        // left
+        quickSort(arr, left, pivotIndex - 1);
+        // right
+        quickSort(arr, pivotIndex + 1, right);
+    }
+    return arr;
 }
-obj.x()();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const grandpa = document.querySelector('#grandparent');
-// const parent = document.querySelector('#parent');
-// const child = document.querySelector('#children');
-
-// grandpa.addEventListener('click', (e) => {
-//     // e.stopPropagation();
-//     console.log('Grandpa clicked')
-// }, true);
-
-// parent.addEventListener('click', (e) => {
-//     e.stopPropagation();
-//     console.log('Parent clicked');
-// }, true);
-
-// child.addEventListener('click', (e) => {
-//     // e.stopPropagation();
-//     console.log('Child clicked');
-// }, true);
-
-// document.querySelector('#categories').addEventListener('click', (e) => {
-//     console.log(e.target.tagName);
-// window.location.href = `/ ${e.target.id}`;
-// console.log('categories clicked.');
-// })
-
-// EVENT DELEGATION
-// document.querySelector('#form').addEventListener('click', (e) => {
-//     // console.log(e);
-//     if (e.target.dataset.uppercase !== undefined) {
-//         e.target.value = e.target.value.toUpperCase();
-//     }
-//     if (e.target.dataset.lowercase !== undefined) {
-//         e.target.value = e.target.value.toLowerCase();
-//     }
-// })
+console.log(quickSort([6, 8, 4, 1, 5, 9, 7]));
