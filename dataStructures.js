@@ -25,6 +25,7 @@ class Student {
 }
 
 let harry = new Student('Harry', 'Potter', 'Witchcraft');
+<<<<<<< HEAD
 // console.log(harry);
 
 class Point {
@@ -108,3 +109,6 @@ list.push(99);
 // first.next = new Node('What\'s');
 // first.next.next = new Node('Up');
 // console.log(first); BAD WAY OF WRITING A LINKED LIST
+=======
+console.log(harry);
+>>>>>>> dc7ab45b35fabe21249d9b026ad71eaff5fec96f
