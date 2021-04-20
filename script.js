@@ -397,17 +397,17 @@ const mostDigits = (nums) => {
 }
 
 const radixSort = (nums) => {
-    let mostDigitsCount = mostDigits(nums);
-    // console.log(mostDigitsCount);
-    for (let k = 0; k < mostDigitsCount; k++) {
-        let digitBuckets = Array.from({ length: 10 }, () => []);
-        for (let i = 0; i < nums.length; i++) {
-            digitBuckets[getDigit(nums[i], k)].push(nums[i]);
+        let mostDigitsCount = mostDigits(nums);
+        // console.log(mostDigitsCount);
+        for (let k = 0; k < mostDigitsCount; k++) {
+            let digitBuckets = Array.from({ length: 10 }, () => []);
+            for (let i = 0; i < nums.length; i++) {
+                digitBuckets[getDigit(nums[i], k)].push(nums[i]);
+            }
+            // console.log(digitBuckets);
+            nums = [].concat(...digitBuckets);
+            // console.log(nums);
         }
-        // console.log(digitBuckets);
-        nums = [].concat(...digitBuckets);
-        // console.log(nums);
+        return nums;
     }
-    return nums;
-}
-console.log(radixSort([12, 3447, 198, 15, 5676]));
+    // console.log(radixSort([12, 3447, 198, 15, 5676]));

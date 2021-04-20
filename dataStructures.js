@@ -25,7 +25,7 @@ class Student {
 }
 
 let harry = new Student('Harry', 'Potter', 'Witchcraft');
-<<<<<<< HEAD
+
 // console.log(harry);
 
 class Point {
@@ -96,12 +96,38 @@ class SinglyLinkedList {
         }
         return current;
     }
+
+    shift() {
+        if (!this.head) return;
+        let temp = this.head;
+        this.head = this.head.next;
+        this.length--;
+        if (this.length === 0) {
+            this.tail = null;
+        }
+        return temp;
+    }
+
+    unshift(val) {
+        let newNode = new Node(val);
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;
+        return newNode;
+    }
 }
 
 let list = new SinglyLinkedList();
 list.push('hi');
 list.push('you');
 list.push(99);
+list.unshift(69);
+// list.shift();
 // list.pop();
 // console.log(list);
 
@@ -109,6 +135,3 @@ list.push(99);
 // first.next = new Node('What\'s');
 // first.next.next = new Node('Up');
 // console.log(first); BAD WAY OF WRITING A LINKED LIST
-=======
-console.log(harry);
->>>>>>> dc7ab45b35fabe21249d9b026ad71eaff5fec96f
