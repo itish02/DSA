@@ -26,7 +26,7 @@ const sameArr = (arr1, arr2) => {
     return true;
 };
 
-// console.log(sameArr([3, 2, 2, 4], [4, 9, 16, 4]));
+// sameArr([3, 2, 2, 4], [4, 9, 16, 4]);
 
 
 // function to check anagram
@@ -44,8 +44,8 @@ function anagramCheck(str1, str2) {
     for (char of newStr2) {
         obj2[char] = (obj2[char] ? obj2[char] : 0) + 1;
     }
-    // console.log(obj1);
-    // console.log(obj2);
+    console.log(obj1);
+    console.log(obj2);
     for (key in obj1) {
         if (!(key in obj2)) {
             return false
@@ -57,7 +57,7 @@ function anagramCheck(str1, str2) {
     return true;
 }
 
-// console.log(anagramCheck('dirtyroom', 'dormitory'));
+anagramCheck('dirtyroom', 'dormitory');
 
 
 // checking zero sum in an sorted array
@@ -233,11 +233,11 @@ const arrayProduct = (arr) => {
 };
 
 // FIBONACCI
-const fib = (n) => {
-        if (n <= 2) return 1;
-        return fib(n - 1) + fib(n - 2);
-    }
-    // console.log(fib(7));
+// const fib = (n) => {
+//         if (n <= 2) return 1;
+//         return fib(n - 1) + fib(n - 2);
+//     }
+// console.log(fib(7));
 
 // STRING REVERSE
 const reverse = (str) => {
