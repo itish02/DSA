@@ -44,8 +44,8 @@ function anagramCheck(str1, str2) {
     for (char of newStr2) {
         obj2[char] = (obj2[char] ? obj2[char] : 0) + 1;
     }
-    console.log(obj1);
-    console.log(obj2);
+    // console.log(obj1);
+    // console.log(obj2);
     for (key in obj1) {
         if (!(key in obj2)) {
             return false
