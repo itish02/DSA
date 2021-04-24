@@ -131,6 +131,64 @@ class SinglyLinkedList {
         }
         return current;
     }
+
+    set(index, val) {
+        let foundNode = this.get(index);
+        if (foundNode) {
+            foundNode.val = val;
+            return true;
+        }
+        return false;
+    }
+
+    insert(index, val) {
+        let node = new Node(val);
+        if (index < 0 || index > this.length) return null;
+        if (index === this.length) this.push(node);
+        if (index === 0) this.unshift(node);
+        let prev = this.get(index - 1);
+        let temp = prev.next;
+        prev.next = node;
+        node.next = temp;
+        this.length++;
+        return true;
+    }
+
+    delete(index) {
+        if (index < 0 || index > this.length) return null;
+        if (index === this.length) this.pop();
+        if (index === 0) this.shift();
+        let prev = this.get(index - 1);
+        let temp = prev.next;
+        prev.next = temp.next;
+        this.length--;
+        return true;
+    }
+
+    reverse() {
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        let next;
+        let prev = null;
+        for (let i = 0; i < this.length; i++) {
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+        return this;
+    }
+
+    print() {
+        let arr = [];
+        let current = this.head;
+        while (current) {
+            arr.push(current.val);
+            current = current.next;
+        }
+        return arr;
+    }
 }
 
 let list = new SinglyLinkedList();
@@ -138,6 +196,7 @@ list.push('hi');
 list.push('you');
 list.push(99);
 list.unshift(69);
+// list.insert(2, 'new val');
 // list.shift();
 // list.pop();
 // console.log(list);
