@@ -205,3 +205,86 @@ list.unshift(69);
 // first.next = new Node('What\'s');
 // first.next.next = new Node('Up');
 // console.log(first); BAD WAY OF WRITING A LINKED LIST
+
+// let reg = /itish/;
+// reg = /itish/g; g -> global (will search of every occurrence instead of 1)
+// reg = /itish/i;  i -> case insensitivity
+// console.log(reg);
+// console.log(typeof(reg));
+// console.log(reg.source);
+
+// let s = 'hi my name is itis dhiman and my friends call me itis';
+// let res = reg.exec(s);
+// res = reg.exec(s);
+// console.log(res);
+// res = reg.exec(s);
+// console.log(res); (we can use multiple exec() with global flag)
+// if (res) {
+//     console.log(res);
+//     console.log(res[0]);
+//     console.log(res.index);
+//     console.log(res.input);
+// }
+
+// console.log(reg.test(s));
+
+// let newExp = /pain/g;
+// let str = 'Living in Spain but the S is silent, thus living in pain.';
+
+// let match = str.match(newExp);
+// // console.log(match);
+
+// let search = str.search(newExp);
+// // console.log(search);
+
+// let replace = str.replace(newExp, 'iberia');
+// console.log(replace);
+
+// let exp = new RegExp('itish');
+// console.log(exp);
+
+// let regex = /itish/;
+
+// regex = /^iti/; // ^ means 'starts with'
+// regex = /ish$/; // $ -> 'ends with'
+// regex = /i.ish/; // . -> matches any one character in its place;
+// regex = /i*ish/; // * -> matches 0 or more number of characters in its place;
+// regex = /iti?shj?x/; // ? -> characters adjacent to ? are optional;
+// regex = /iti\#h/; // \# -> this backslash is used to have special characters or symbols in our regexp, the symbols can be anything (@, #, $, %) etc.
+
+// let str = 'iti#h';
+
+// let result = regex.exec(str);
+// console.log('The result from exec is ->', result);
+
+// if (regex.test(str)) {
+//     console.log(`The string '${str}' matches the expression ${regex.source}`);
+// } else {
+//     console.log(`The string '${str}' does not match the expression ${regex.source}`);
+// }
+
+// CHARACTER SETS
+let regex = /i[a - z]ish/;
+regex = /i[a-zA-Z]i[^adeADE]h[0-10]/;
+regex = /itis{0,2}h/;
+regex = /(iti){2}([0-9]sh){3}/;
+const str = 'itiiti1sh2sh3sh dhiman';
+
+let result = regex.exec(str);
+console.log('The result from exec is ->', result);
+
+if (regex.test(str)) {
+    console.log(`The string '${str}' matches the expression ${regex.source}`);
+} else {
+    console.log(`The string '${str}' does not match the expression ${regex.source}`);
+}
+
+const getData = (url) => {
+    fetch(url).then(response => {
+        // console.log(response);
+        return response.json();
+    }).then(data => console.log(data));
+}
+
+const url = 'https://game-of-thrones-quotes.herokuapp.com/v1/random';
+getData(url);
