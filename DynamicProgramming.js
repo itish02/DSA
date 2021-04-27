@@ -54,4 +54,4 @@ const spec = applySpec({
     }
 })
 
-console.log(spec(2, 4));
+// console.log(spec(2, 4));
