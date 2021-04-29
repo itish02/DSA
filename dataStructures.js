@@ -291,29 +291,29 @@ list.unshift(69);
 
 
 
-let regex = /\wish/; // -> works for word char, alphabets, numbers, _
-regex = /\w+2hh/; // -> one or more word characters
-regex = /\Wdh/; // -> non word characters
-regex = /\W+dh/; // -> one or more non word characters
-regex = /\d50/; // -> matches with digit characters
-regex = /\d+/; // -> one or more digits
-regex = /\D23/; // -> non digit characters
-regex = /\sdh/; // -> for matching white space character
-regex = /\s+dh/; // -> for matching more than one white space character
-regex = /\Ssh/; // -> for matching non white space characters
-regex = /ish\b/; // -> word boundary
+// let regex = /\wish/; // -> works for word char, alphabets, numbers, _
+// regex = /\w+2hh/; // -> one or more word characters
+// regex = /\Wdh/; // -> non word characters
+// regex = /\W+dh/; // -> one or more non word characters
+// regex = /\d50/; // -> matches with digit characters
+// regex = /\d+/; // -> one or more digits
+// regex = /\D23/; // -> non digit characters
+// regex = /\sdh/; // -> for matching white space character
+// regex = /\s+dh/; // -> for matching more than one white space character
+// regex = /\Ssh/; // -> for matching non white space characters
+// regex = /ish\b/; // -> word boundary
 
-// ASSERTIONS
-regex = /m(?=x)/; // -> will only match if the character after m is x
-regex = /m(?!x)/; // -> will only match if the character after m is NOT x
+// // ASSERTIONS
+// regex = /m(?=x)/; // -> will only match if the character after m is x
+// regex = /m(?!x)/; // -> will only match if the character after m is NOT x
 
-const str = 'itish dhiman and Becks23';
+// const str = 'itish dhiman and Becks23';
 
-let result = regex.exec(str);
-console.log('The result from exec is ->', result);
+// let result = regex.exec(str);
+// console.log('The result from exec is ->', result);
 
-if (regex.test(str)) {
-    console.log(`The string '${str}' matches the expression ${regex.source}`);
-} else {
-    console.log(`The string '${str}' does not match the expression ${regex.source}`);
-}
+// if (regex.test(str)) {
+//     console.log(`The string '${str}' matches the expression ${regex.source}`);
+// } else {
+//     console.log(`The string '${str}' does not match the expression ${regex.source}`);
+// }
