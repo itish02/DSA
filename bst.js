@@ -41,26 +41,77 @@ class BinarySearchTree {
         if (!this.root) return undefined;
         let current = this.root;
         if (value === current.value) return true;
-        while (true) {
+        while (true && current) {
             if (value < current.value) {
-                if (!current.left) return false;
                 current = current.left;
-                if (value === current.value) return true;
             } else if (value > current.value) {
-                if (!current.right) return false;
                 current = current.right;
-                if (value === current.value) return true;
+            } else {
+                return true;
             }
         }
+        return false;
+    }
+
+    BFS() {
+        let node = this.root,
+            data = [],
+            queue = [];
+        queue.push(node);
+        while (queue.length) {
+            node = queue.shift();
+            data.push(node.value);
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
+        }
+        return data;
+    }
+
+    DFSPreOrder() {
+        let data = [];
+        let current = this.root;
+
+        function traverse(node) {
+            data.push(node.value);
+            if (node.left) traverse(node.left);
+            if (node.right) traverse(node.right);
+        }
+        traverse(current);
+        return data;
+    }
+
+    DFSPostOrder() {
+        let data = [];
+
+        function traverse(node) {
+            if (node.left) traverse(node.left);
+            if (node.right) traverse(node.right);
+            data.push(node.value);
+        }
+        traverse(this.root);
+        return data;
+    }
+
+    DFSInOrder() {
+        let data = [];
+
+        function traverse(node) {
+            if (node.left) traverse(node.left);
+            data.push(node.value);
+            if (node.right) traverse(node.right);
+        }
+        traverse(this.root);
+        return data;
     }
 }
 
 
 const tree = new BinarySearchTree();
 tree.insert(10);
-tree.insert(7);
+tree.insert(6);
 tree.insert(15);
-tree.insert(5);
-tree.insert(12);
-tree.insert(9);
+tree.insert(3);
+tree.insert(8);
+tree.insert(20);
 tree.insert(17);
+tree.DFSPreOrder();
