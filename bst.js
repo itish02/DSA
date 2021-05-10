@@ -138,7 +138,49 @@ class MaxBinaryHeap {
             index = parentIndex;
         }
         return this;
-    };
+    }
+
+    extractMax() {
+        const max = this.values[0];
+        const end = this.values.pop();
+        if (this.values.length > 0) {
+            this.values[0] = end;
+            this.sinkDown();
+        }
+        return max;
+    }
+
+    sinkDown() {
+        let index = 0;
+        const length = this.values.length;
+        const element = this.values[0];
+        while (true) {
+            let leftChildIndex = 2 * index + 1;
+            let rightChildIndex = 2 * index + 2;
+            let leftChild, rightChild;
+            let swap = null;
+            if (leftChildIndex < length) {
+                leftChild = this.values[leftChildIndex];
+                if (leftChild > element) {
+                    swap = leftChildIndex;
+                }
+            }
+            if (rightChildIndex < length) {
+                rightChild = this.values[rightChildIndex];
+                if (
+                    (!swap && rightChild > element) ||
+                    (swap && rightChild > leftChild)
+                ) {
+                    swap = rightChildIndex;
+                }
+            }
+            if (swap === null) break;
+            this.values[index] = this.values[swap];
+            this.values[swap] = element;
+            index = swap;
+        }
+        return element;
+    }
 };
 
 let heap = new MaxBinaryHeap();
