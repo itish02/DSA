@@ -11,7 +11,7 @@ const hashFunc = (key, arrLength) => {
 
 // HASH CLASS
 class Hash {
-    constructor(size = 53) {
+    constructor(size = 5) {
         this.keymap = new Array(size);
     }
 
@@ -33,6 +33,26 @@ class Hash {
         }
         this.keymap[index].push([key, value]);
     }
+
+    get(key) {
+        let index = this._hash(key);
+        if (this.keymap[index]) {
+            for (let i = 0; i < this.keymap[index].length; i++) {
+                if (this.keymap[index][i][0] === key) {
+                    return this.keymap[index][i][1];
+                }
+            }
+        }
+        return undefined;
+    }
 }
 
-let hashTable = new Hash();
+let hashTable = new Hash(10);
+hashTable.set('red', '#FF0000');
+hashTable.set('blue', '#0000FF');
+hashTable.set('green', '#008000');
+hashTable.set('maroon', '#800000');
+hashTable.set('dark gray', '#A9A9A9');
+hashTable.set('lemon', '#FFFACD');
+hashTable.set('olive', '#808000');
+hashTable.set('yellow', '#FFFF00');
