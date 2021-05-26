@@ -45,9 +45,37 @@ class Hash {
         }
         return undefined;
     }
+
+    values() {
+        let valArr = [];
+        for (let i = 0; i < this.keymap.length; i++) {
+            if (this.keymap[i]) {
+                for (let j = 0; j < this.keymap[i].length; j++) {
+                    if (!valArr.includes(this.keymap[i][j][1])) {
+                        valArr.push(this.keymap[i][j][1]);
+                    }
+                }
+            }
+        }
+        return valArr;
+    }
+
+    keys() {
+        let keyArr = [];
+        for (let i = 0; i < this.keymap.length; i++) {
+            if (this.keymap[i]) {
+                for (let j = 0; j < this.keymap[i].length; j++) {
+                    if (!keyArr.includes(this.keymap[i][j][0])) {
+                        keyArr.push(this.keymap[i][j][0]);
+                    }
+                }
+            }
+        }
+        return keyArr;
+    }
 }
 
-let hashTable = new Hash(10);
+let hashTable = new Hash(19);
 hashTable.set('red', '#FF0000');
 hashTable.set('blue', '#0000FF');
 hashTable.set('green', '#008000');
@@ -56,3 +84,7 @@ hashTable.set('dark gray', '#A9A9A9');
 hashTable.set('lemon', '#FFFACD');
 hashTable.set('olive', '#808000');
 hashTable.set('yellow', '#FFFF00');
+
+// hashTable.keys().forEach(key => {
+//     console.log(hashTable.get(key));
+// })
